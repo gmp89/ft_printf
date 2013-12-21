@@ -6,7 +6,7 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/21 18:28:53 by gpetrov           #+#    #+#             */
-/*   Updated: 2013/12/21 22:09:51 by gpetrov          ###   ########.fr       */
+/*   Updated: 2013/12/21 23:31:20 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ void	ft_if(char *str, t_data *data);
 void	ft_putstr_exep(t_data *d, char *str);
 void	ft_putchar_exep(t_data *d, char c);
 char	*ft_itoa(int n);
+int		ft_printf(char *str, ...);
 
 #endif

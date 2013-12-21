@@ -6,12 +6,17 @@
 /*   By: gpetrov <gpetrov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/21 15:44:53 by gpetrov           #+#    #+#             */
-/*   Updated: 2013/12/21 22:26:59 by gpetrov          ###   ########.fr       */
+/*   Updated: 2013/12/21 23:52:35 by gpetrov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
+void		ft_if_percent(t_data *data)
+{
+	ft_putchar('%');
+	data->count++;
+}
 void		ft_if_s(t_data *data)
 {
 	data->str_cpy = ft_strdup(va_arg(data->ap, char *));
@@ -29,6 +34,8 @@ void		ft_if(char *str, t_data *data)
 	if (str[data->i] == '%')
 		{
 			data->i++;
+			if (str[data->i] == '%')
+				ft_if_percent(data);
 			if (str[data->i] == 'c' )
 				ft_putchar_exep(data, va_arg(data->ap, int));
 			if (str[data->i] == 's')
@@ -73,8 +80,14 @@ int		ft_printf(char *str, ...)
 		ft_if(str, &d);
 		d.i++;
 	}
-	ft_putchar('\n');
 	va_end(d.ap);
+	ft_putchar('\n');
 	ft_putnbr(d.count);
 	return (d.count);
+}
+
+int		main()
+{
+	ft_printf("%d", 10);
+	return (0);
 }
